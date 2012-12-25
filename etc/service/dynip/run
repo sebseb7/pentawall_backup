@@ -1,0 +1,26 @@
+#!/usr/local/bin/node
+
+
+
+
+var os=require('os');
+var http = require('http');
+
+
+var ifaces=os.networkInterfaces();
+var ips = '';
+for (var dev in ifaces) {
+	var alias=0;
+	ifaces[dev].forEach(function(details){
+		ips+=details.address+";";
+	});
+};
+
+http.get("http://monitor.exse.net/?pentawall_"+ips, function(res) {
+		});
+
+
+setInterval(function(){
+	process.exit(0);
+},10000);
+
